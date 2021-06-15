@@ -22,11 +22,12 @@ def log_in(user,passw, url, keyword):
     password.send_keys(passw)
     sleep(3)
 
+    #bo qua muc theo doi
     log_in = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))).click()
     sleep(2)
     skip = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Lúc khác')]"))).click()
 
-
+    #Nhan nut tim kiem
     searchbox = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Tìm kiếm']")))
     searchbox.clear()
     searchbox.send_keys(keyword)
@@ -34,6 +35,8 @@ def log_in(user,passw, url, keyword):
     #searchbox.send_keys(Keys.ENTER)
     #sleep(1)
     #searchbox.send_keys(Keys.ENTER)
+
+    #Click to search
     my_link = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/" + keyword[1:] + "/')]")))
     my_link.click()
 
